@@ -1,0 +1,37 @@
+openapi: 3.0.3
+info:
+  title: User API
+  version: 1.0.0
+  description: API for managing users
+servers:
+  - url: http://localhost:8080/api
+    description: Local server
+
+paths:
+  /user:
+    post:
+      summary: Save User
+      operationId: saveUser
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserDTO'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDTO'
+components:
+  schemas:
+    UserDTO:
+      type: object
+      description: Data element for User
+      properties:
+        id:
+          type: string
+        email:
+          type: string
